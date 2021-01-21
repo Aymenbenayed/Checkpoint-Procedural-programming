@@ -1,0 +1,71 @@
+/*Procedure calcule vectors */
+PROCEDURE dot_product(V1,V2:ARRAY_OF FLOAT, VAR PS:FLOAT)
+VAR
+    i:INTEGER;
+BEGIN
+    IF(V1.length==V2.length)
+        FOR i FROM 0 TO 2 STEP 1  DO
+            PS:=PS+(V1[i]*V2[i]);
+        END_FOR 
+        Write(PS);
+    ELSE("the length of two vectors are not equals ")
+END
+/*Algro using proc*/
+ALGORITHM Orthogonal
+VAR
+    i,j,n1,n2:INTEGER;
+    V1:ARRAY_OF FLOAT[];
+    V2:ARRAY_OF FLOAT[];
+    PS:FLOAT;
+BEGIN
+    REPEAT
+        Read(n1);
+        Read(n2);
+    UNTIL (n1>0 and n2>0)
+    dot_product(V1,V2,PS);
+    IF (PS==0) THEN
+        Write("the two vectors are orthogonal");
+        ELSE
+        Write("The two vectors are Not orthogonal");
+    END_IF
+END
+
+
+/*Function */ 
+
+FUNCTION dot_product(V1,V2:ARRAY_OF FLOAT):FLOAT
+VAR
+    i:INTEGER;
+    PS:FLOAT;
+BEGIN
+    IF(V1.length==V2.length)
+        FOR i FROM 0 TO 2 STEP 1  DO
+            PS:=PS+(V1[i]*V2[i]);
+        END_FOR 
+        Write(PS);
+        RETURN PS
+    ELSE("the length of two vectors are not equals ")
+    PS:=NaN
+    RETURN PS
+END
+
+/*algo using function*/
+ALGORITHM Orthogonal
+VAR
+    i,j,n1,n2:INTEGER;
+    V1:ARRAY_OF FLOAT[];
+    V2:ARRAY_OF FLOAT[];
+    ps:FLOAT;
+BEGIN
+    REPEAT
+        Read(n1);
+        Read(n2);
+    UNTIL (n1>0 and n2>0)
+    PS:=dot_product(V1,V2);
+    IF (PS==0) THEN
+        Write("the two vectors are orthogonal");
+        ELSE
+        Write("The two vectors are Not orthogonal");
+    END_IF
+END
+
